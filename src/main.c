@@ -1,4 +1,4 @@
-#include "tokenizer.h"
+#include "lexer.h"
 
 int main(void){
 

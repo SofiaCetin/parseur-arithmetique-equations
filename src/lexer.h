@@ -1,5 +1,5 @@
-#ifndef TOKENIZE_H_
-#define TOKENIZE_H_
+#ifndef LEXER_H_
+#define LEXER_H_
 
 typedef struct Operand{
     char* name;
