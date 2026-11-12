@@ -1,43 +1,28 @@
 #include "utils.h"
 
-int str_in(char* s, char c){
-    if (s == NULL){
-        return 1;
-    }
-    while(*(s) != '\0'){
-        if (*(s) == c){
-            return 0;
-        }
-        s++;
-    }
-    return 1;
+int isListValid(List* list){
+    return list != NULL;
 }
 
-size_t str_len(char* s){
-    size_t i;
-    for (i = 0; s[i] != '\0'; i++)
-        ;
-    return i;
+int isElValid(ListEl* el){
+    return el != NULL && el->value != NULL && el->type != NULL;
 }
 
-char* strcat(char *dest, const char *src){
-    size_t i,j;
-    for (i = 0; dest[i] != '\0'; i++)
-        ;
-    for (j = 0; src[j] != '\0'; j++)
-        dest[i+j] = src[j];
-    dest[i+j] = '\0';
-    return dest;
+List* create_list(ListEl* first){
+    if (!isElValid(first))
+        return NULL;
+    List* res = malloc(sizeof(List));
+    if (!isListValid(res))
+        return NULL;
+    res->first = first;
+    res->len = 1;
+    return res;
 }
 
-int main(void){
-    printf("%d", str_in("abcd", 'e'));
-    char s[] = "bonjour";
-    char* a = malloc(sizeof(s));
-    if (a == NULL){
-        return 1;
+void cons(List* list, ListEl* el){
+    if (!isListValid(list) || !isElValid(el)){
+        return;
     }
-    a = add_char("bonjour", 'p');
-    printf("%s", a);
-    return 0;
+    el->next = list->first;
+    list->first = el;
 }
