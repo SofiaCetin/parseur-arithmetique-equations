@@ -1,17 +1,17 @@
-#include "utils.h"
+#include "list.h"
 
-int isListValid(List* list){
+int isListValid(TokenList* list){
     return list != NULL;
 }
 
-int isElValid(ListEl* el){
-    return el != NULL && el->value != NULL && el->type != NULL;
+int isElValid(TokenEl* el){
+    return el != NULL && el->value != NULL;
 }
 
-List* create_list(ListEl* first){
+TokenList* create_list(TokenEl* first){
     if (!isElValid(first))
         return NULL;
-    List* res = malloc(sizeof(List));
+    TokenList* res = malloc(sizeof(TokenList));
     if (!isListValid(res))
         return NULL;
     res->first = first;
@@ -19,7 +19,7 @@ List* create_list(ListEl* first){
     return res;
 }
 
-void cons(List* list, ListEl* el){
+void cons(TokenList* list, TokenEl* el){
     if (!isListValid(list) || !isElValid(el)){
         return;
     }
