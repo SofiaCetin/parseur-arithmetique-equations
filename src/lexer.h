@@ -6,6 +6,6 @@
 #include "mystr.h"
 
 
-Token char_type(char c);
+TokenList* tokenize(char* expr);
 
 #endif
