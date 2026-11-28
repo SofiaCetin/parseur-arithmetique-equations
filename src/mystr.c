@@ -135,33 +135,34 @@ char str_to_char(char* str){
     return res;
 }
 
-int search_for_pattern(const char* str, const char* input){
-    if (str == NULL || input == NULL){
+int str_ends_with(const char* str, const char* input){
+    if (str == NULL || input == NULL || str_len(str) < str_len(input)){
         return -1;
     }
 
+    size_t string_len = str_len(str);
     size_t input_len = str_len(input);
-    int res_switch = 0;
-    if (input_len == 1){
-        return any_c_in(str, input);
-    }
-
-    for(size_t i = 0; i <= str_len(str) - input_len; i++){
-        if (*(str + i) == *input){
-            res_switch = 1;
-            for (size_t k = 0; k < input_len; k++){
-                if (*(str + i + k) != *(input + k)){
-                    res_switch = 0;
-                    break;
-                }
-            }
-
-            if (res_switch){
-                return 1;
-            }
+    size_t i = string_len - input_len;
+    size_t j = 0;
+    for (; i < string_len; i++, j++){
+        if (*(str + i) != *(input + j)){
+            return 0;
         }
     }
-    return 0;
+
+    return 1;
+}
+
+int str_cmp(const char* a, const char* b){
+    if (a == NULL || b == NULL || str_len(a) != str_len(b)){
+        return 0;
+    }
+    for (size_t i = 0; i <= str_len(a); i++){
+        if (*(a + i) != *(b + i)){
+            return 0;
+        }
+    }
+    return 1;
 }
 
 int hasOneEqualSymbol(char* str){

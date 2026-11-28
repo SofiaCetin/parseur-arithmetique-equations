@@ -47,7 +47,7 @@ Real cfmaxl(const Real *args){
     return args[0] > args[1] ? args[0] : args[1];
 }
 
-const MathFunction FUNCTIONS[] = {
+const MathFunction FUNCTIONS[LIST_LENGTH] = {
     {"sin", cfsinl, 1},
     {"cos", cfcosl, 1},
     {"tan", cftanl, 1},

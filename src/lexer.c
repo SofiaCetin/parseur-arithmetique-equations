@@ -2,7 +2,6 @@
 #include "mystr.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "math_lib.h"
 #include <unistd.h>
 
 
@@ -120,18 +119,4 @@ struct TokenCell* group_same_type(struct TokenCell* element, int steps){
         current = next;
     }
     return current;
-}
-
-int main(void){
-    List test = pre_tokenization(strip("120 +- abx + 2x = 3"));
-    if (test == NULL){
-        ERROR("Liste nulle");
-        return 1;
-    }
-    show_list(test);
-    tokenization(test);
-    show_list(test);
-    delete_list(&test);
-    getchar();
-    return 0;
 }

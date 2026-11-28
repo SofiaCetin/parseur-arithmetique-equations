@@ -16,6 +16,7 @@ char* str_add(char *dest, char c);
 char* char_to_str(char c);
 char* strip(char* str);
 char str_to_char(char* str);
+int str_ends_with(const char* str, const char* input);
 int hasOneEqualSymbol(char* str);
 
 #endif
